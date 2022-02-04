@@ -1,4 +1,4 @@
-# DelayBot
+# Delay-Bot
 
 GroupMe bot that checks your county's Facebook page and posts it to the GroupMe if it contains info about school delays/closings.
 
