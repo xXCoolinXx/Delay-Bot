@@ -28,9 +28,9 @@ def check_fb_posts():
                 if kw.lower() in post['text'].lower():
                     print(post['text'][:50])
                     groupme_post(\
-                        "🚨 New post from SCS 🚨\n" + \
+                        f"🚨 New post from {fb_page} 🚨\n" + \
                         post['text'] + \
-                        "\nhttps://www.facebook.com/SumnerSchools/")
+                        f"\nhttps://www.facebook.com/{fb_page}/")
                     break
 
 def check_loop():
