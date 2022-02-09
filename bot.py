@@ -33,19 +33,26 @@ def check_fb_posts():
                         "\nhttps://www.facebook.com/SumnerSchools/")
                     break
 
-def check_loop():
+def check_failsafe():
+    #It fails sometimes :/
+    try:
+        check_fb_posts()
+    except:
+        check_fb_posts() 
+
+
+def main():
+    #Every five minutes, checking if a new post has been made in
+    #the last 5.1 minutes that contains one of the keywords.
+    #This is run in a separate thread to prevent from blocking and missing some posts
+    #There is a small chance that a post will be sent twice, but this should be rare
     while True:
         print("Checking")
-        #It fails sometimes randomly so this is just a way to protect against that
-        try:
-            check_fb_posts()
-        except:
-            check_fb_posts() 
+        asyncio.run(check_failsafe())
         print("Sleeping")
         sleep(5 * 60)
 
-def main():
-    asyncio.run(check_loop())
+    
 
 
 if __name__ == "__main__":
